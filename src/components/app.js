@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import ContactForm from './ContactForm.js';
 import ContactList from './ContactList.js';
 import Filter from './Filter.js';
@@ -97,14 +97,14 @@ class App extends Component {
 }
 
 // Prop types validation for the App component
-App.propTypes = {
-  name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
-  filter: PropTypes.string.isRequired,
-  handleNameChange: PropTypes.func.isRequired,
-  handleNumberChange: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-  handleDeleteContact: PropTypes.func.isRequired,
-};
+// App.propTypes = {
+//   name: PropTypes.string.isRequired,
+//   number: PropTypes.string.isRequired,
+//   filter: PropTypes.string.isRequired,
+//   handleNameChange: PropTypes.func.isRequired,
+//   handleNumberChange: PropTypes.func.isRequired,
+//   handleSubmit: PropTypes.func.isRequired,
+//   handleDeleteContact: PropTypes.func.isRequired,
+// };
 
 export default App;
