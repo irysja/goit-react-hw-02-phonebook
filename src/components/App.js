@@ -1,26 +1,21 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ContactForm from './ContactForm.js';
-import ContactList from './ContactList.js';
+import ContactForm from './contact/ContactForm.js';
 import Filter from './Filter.js';
+import ContactList from './contact/ContactList.js';
 import { nanoid } from 'nanoid';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      contacts: [
-        { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-        { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-        { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-        { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-      ],
-      name: '',
-      number: '',
-      filter: '',
-    };
-  }
+  state = {
+    contacts: [
+      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    ],
+    filter: '',
+  };
 
   handleNameChange = (event) => {
     this.setState({ name: event.target.value });
@@ -88,8 +83,6 @@ class App extends Component {
           handleNumberChange={this.handleNumberChange}
           handleSubmit={this.handleSubmit}
         />
-
-        <h2>Contacts</h2>
         <Filter filter={filter} handleFilterChange={this.handleFilterChange} />
         <ContactList contacts={filteredContacts} handleDeleteContact={this.handleDeleteContact} />
       </div>
@@ -97,7 +90,6 @@ class App extends Component {
   }
 }
 
-// Define the propTypes for the App component
 App.propTypes = {
   name: PropTypes.string,
   number: PropTypes.string,
@@ -112,5 +104,7 @@ App.propTypes = {
 };
 
 export default App;
+
+
 
 

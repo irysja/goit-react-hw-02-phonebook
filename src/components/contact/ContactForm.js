@@ -1,11 +1,29 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './ContactForm.module.css';
 
-const ContactForm = ({ name, number, handleNameChange, handleNumberChange, handleSubmit }) => {
+const ContactForm = ({ handleNameChange, handleNumberChange, handleSubmit }) => {
+  const [name, setName] = useState(''); 
+  const [number, setNumber] = useState('');
+
+  const handleNameInputChange = (event) => {
+    setName(event.target.value);
+    handleNameChange(event.target.value);
+  };
+
+  const handleNumberInputChange = (event) => {
+    setNumber(event.target.value);
+    handleNumberChange(event.target.value);
+  };
+
+  const handleSubmitForm = (event) => {
+    event.preventDefault();
+    handleSubmit();
+  };
+
   return (
-    <form className={styles.container} onSubmit={handleSubmit}>
+    <form className={styles.container} onSubmit={handleSubmitForm}>
       <div className={styles.inputContainer}>
         <label htmlFor="name">Name</label>
         <input
@@ -15,11 +33,11 @@ const ContactForm = ({ name, number, handleNameChange, handleNumberChange, handl
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
           value={name}
-          onChange={handleNameChange}
+          onChange={handleNameInputChange} 
         />
       </div>
       <div className={styles.inputContainer}>
-        <label htmlFor="name">Number</label>
+        <label htmlFor="number">Number</label>
         <input
           type="tel"
           name="number"
@@ -27,7 +45,7 @@ const ContactForm = ({ name, number, handleNameChange, handleNumberChange, handl
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
           value={number}
-          onChange={handleNumberChange}
+          onChange={handleNumberInputChange} 
         />
       </div>
       <div className={styles.buttonContainer}>
@@ -38,13 +56,17 @@ const ContactForm = ({ name, number, handleNameChange, handleNumberChange, handl
 };
 
 ContactForm.propTypes = {
-  name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
   handleNameChange: PropTypes.func.isRequired,
   handleNumberChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
 };
 
 export default ContactForm;
+
+
+
+ 
+
+
 
 
