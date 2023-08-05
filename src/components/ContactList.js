@@ -32,7 +32,6 @@ const ContactList = ({ contacts, handleDeleteContact }) => {
   );
 };
 
-// Prop types validation for the ContactList component
 ContactList.propTypes = {
   contacts: PropTypes.arrayOf(
     PropTypes.shape({
