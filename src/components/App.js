@@ -1,6 +1,5 @@
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import ContactForm from './contact/ContactForm.js';
 import Filter from './Filter.js';
 import ContactList from './contact/ContactList.js';
@@ -15,23 +14,24 @@ class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
+    name: '',
+    number: '',
   };
 
-  handleNameChange = (event) => {
-    this.setState({ name: event.target.value });
+  handleNameChange = (name) => {
+    this.setState({ name });
   };
 
-  handleNumberChange = (event) => {
-    this.setState({ number: event.target.value });
+  handleNumberChange = (number) => {
+    this.setState({ number });
   };
 
   handleFilterChange = (event) => {
     this.setState({ filter: event.target.value });
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    const { name, number, contacts } = this.state;
+  handleSubmit = (name, number) => {
+    const { contacts } = this.state;
 
     if (name.trim() === '' || number.trim() === '') {
       alert('Please enter a valid name and phone number.');
@@ -90,20 +90,8 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
-  name: PropTypes.string,
-  number: PropTypes.string,
-  filter: PropTypes.string,
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    })
-  ),
-};
-
 export default App;
+
 
 
 
